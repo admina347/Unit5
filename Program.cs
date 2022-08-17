@@ -1,34 +1,74 @@
 ﻿using System;
 
-static int[] GetArrayFromConsole() {
-  var result = new int[5];
+class MainClass
+{
 
-  for (int i = 0; i < result.Length; i++) {
-    Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-    result[i] = int.Parse(Console.ReadLine());
-  }
+    static string ShowColor(string username)
+    {
+        Console.WriteLine("{0} Напишите свой любимый цвет на английском с маленькой буквы: ", username);
+        var color = Console.ReadLine();
 
-    int temp = 0;
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
 
-		for (int i = 0; i < result.Length; i++)
-		{
-			for (int j = i + 1; j < result.Length; j++)
-			{
-				if (result[i] > result[j])
-				{
-					temp = result[i];
-					result[i] = result[j];
-					result[j] = temp;
-				}
-			}
-		}
+                Console.WriteLine("Your color is red!");
+                break;
 
-		foreach(var item in result)
-		{
-			Console.Write(item);
-		}
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
 
-  return result;
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is default color yellow!");
+                break;
+        }
+
+        return color;
+    }
+
+    public static void Main(string[] args)
+    {
+
+        (string name, int age) anketa;
+
+        Console.Write("Введите имя: ");
+        anketa.name = Console.ReadLine();
+        Console.Write("Введите возраст с цифрами: ");
+        anketa.age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Ваше имя: {0}", anketa.name);
+        Console.WriteLine("Ваш возраст: {0}", anketa.age);
+
+        Console.ReadKey();
+
+
+
+        var favcoloros = new string[3];
+        for (int i = 0; i < favcoloros.Length; i++)
+        {
+            favcoloros[i] = ShowColor(anketa.name);
+        }
+
+        Console.WriteLine("Ваши любимые цвета: ");
+        foreach (var color in favcoloros)
+        {
+            Console.WriteLine(color);
+        }
+        Console.ReadKey();
+
+    }
 }
-
-GetArrayFromConsole();
