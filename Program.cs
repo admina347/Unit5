@@ -1,9 +1,9 @@
 ﻿using System;
 
-static int[] GetArrayFromConsole()
+static int[] GetArrayFromConsole(int num = 5)
 {
 
-    var result = new int[5];
+    var result = new int[num];
 
     for (int i = 0; i < result.Length; i++)
     {
@@ -34,22 +34,22 @@ static int[] SortArray(int[] result)
     return result;
 }
 
-int[] array = GetArrayFromConsole();
+static void ShowArray(int[] array, bool isSort = false) {
+    var temp = array;
+    if (isSort) 
+    {
+        temp = SortArray(array);
+    }
+    foreach (var item in temp)
+    {
+        Console.Write(item);
+    }
+}
+
+var array = GetArrayFromConsole(10);
 
 Console.WriteLine("Вы ввели: ");
 
-foreach (var item in array)
-{
-    Console.Write(item);
-}
-
-int[] sortarray = SortArray(array);
-
-Console.WriteLine("\nСортировка: ");
-
-foreach (var item in sortarray)
-{
-    Console.Write(item);
-}
+ShowArray(array, true);
 
 Console.ReadKey();
