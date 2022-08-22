@@ -5,21 +5,28 @@ class MainClass
     static void Main(string[] args)
     {
 
-        Console.WriteLine(Factorial(20));
+        Console.WriteLine (PowerUp(2, 3));
 
-        //Console.ReadKey();
     }
 
-    static decimal Factorial(decimal x)
-    {
-        if (x == 0)
+    private static int PowerUp(int N, byte pow)
         {
-            return 1;
+            if (pow == 0)
+            {
+                return 1;
+            }
+            else
+            {
+
+                if (pow == 1)
+                {
+                   return N;
+                }
+                else
+                {
+                  return N * PowerUp(N, --pow);
+                }
+            }
         }
-        else
-        {
-            return x * Factorial(x - 1);
-        }
-    }
 
 }
