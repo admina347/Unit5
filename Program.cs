@@ -4,29 +4,22 @@ class MainClass
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Напишите что-то");
-        var str = Console.ReadLine();
 
-        Console.WriteLine("Укажите глубину эха");
-        var deep = int.Parse(Console.ReadLine());
+        Console.WriteLine(Factorial(20));
 
-        Echo(str, deep);
-
-        Console.ReadKey();
+        //Console.ReadKey();
     }
 
-    static void Echo(string saidworld, int deep)
+    static long Factorial(long x)
     {
-        var modif = saidworld;
-        if (modif.Length > 2)
+        if (x == 0)
         {
-            modif = modif.Remove(0, 2);
+            return 1;
         }
-        Console.WriteLine("..." + modif);
-
-        if (deep > 1)
+        else
         {
-            Echo(modif, deep - 1);
+            return x * Factorial(x - 1);
         }
     }
+
 }
