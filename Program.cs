@@ -1,55 +1,35 @@
 ﻿using System;
 
-static int[] GetArrayFromConsole(int num = 5)
+class Program
 {
-
-    var result = new int[num];
-
-    for (int i = 0; i < result.Length; i++)
+    static void Main(string[] args)
     {
-        Console.WriteLine("Введите элемент массива номер {0}", i + 1);
-        result[i] = int.Parse(Console.ReadLine());
+        var someName = "Евгения";
+        var someAge = 20;
+        Console.WriteLine(someName);
+
+        GetName(ref someName);
+
+        Console.WriteLine(someName);
+
+        ChangeAge(someAge);
+
+        Console.WriteLine(someAge);
+
+        Console.ReadKey();
+    }
+    static void GetName(ref string name)
+    {
+        Console.WriteLine("Введите имя");
+        name = Console.ReadLine();
+
     }
 
-    return result;
+    static void ChangeAge(int age)
+    {
+        Console.WriteLine("Введите Возраст");
+        age = Convert.ToInt32(Console.ReadLine());
+
+    }
+
 }
-
-static int[] SortArray(int[] result)
-{
-    int temp = 0;
-
-    for (int i = 0; i < result.Length; i++)
-    {
-        for (int j = i + 1; j < result.Length; j++)
-        {
-            if (result[i] > result[j])
-            {
-                temp = result[i];
-                result[i] = result[j];
-                result[j] = temp;
-            }
-        }
-    }
-
-    return result;
-}
-
-static void ShowArray(int[] array, bool isSort = false) {
-    var temp = array;
-    if (isSort) 
-    {
-        temp = SortArray(array);
-    }
-    foreach (var item in temp)
-    {
-        Console.Write(item);
-    }
-}
-
-var array = GetArrayFromConsole(10);
-
-Console.WriteLine("Вы ввели: ");
-
-ShowArray(array, true);
-
-Console.ReadKey();
