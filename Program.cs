@@ -16,4 +16,10 @@ class MainClass {
 		arr[0] = 4;
 	}
 
+static int SumNumbers(ref int num1, in int num2, out int num3, int num4) => num3 = num1 + num2;
+
+
+
+
+
 }
