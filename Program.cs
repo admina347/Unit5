@@ -10,7 +10,7 @@ class MainClass
         //Console.ReadKey();
     }
 
-    static long Factorial(long x)
+    static decimal Factorial(decimal x)
     {
         if (x == 0)
         {
