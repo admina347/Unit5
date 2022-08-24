@@ -2,18 +2,17 @@
 
 class Program
 {
-    static (string Name, string LastName, int Age, bool Pet, string[] Pets, string[] Colors) User; //Кортеж пользователя
     static void Main(string[] args)
     {
-        //Полчить в кортеж данные которые ввел пользователь - возвращаемые методом
-        User = GetUserInfo();
-        //Вывести на экран данные пользователя передать данные кортежа в метод
-        ShowUserInfo(User.Name, User.LastName, User.Age, User.Pet, User.Pets, User.Colors);
+        //Получить в кортеж данные которые ввел пользователь - возвращаемые методом
+        var User = GetUserInfo();
+        //Вывести на экран данные пользователя передать кортеж в метод
+        ShowUserInfo(User);
     }
-
     //Метод, который заполняет данные с клавиатуры по пользователю (возвращает кортеж): User
     static (string Name, string LastName, int Age, bool Pet, string[] Pets, string[] Colors) GetUserInfo()
     {
+        (string Name, string LastName, int Age, bool Pet, string[] Pets, string[] Colors) User; //Кортэж пользователя
         string inputstr;    //Введенная строка
         int inputint;       //Введенная строка - число
         //Имя;
@@ -76,7 +75,6 @@ class Program
     {
         if (int.TryParse(number, out int intnum))
         {
-            //число
             if (intnum > 0 && intnum < 100)
             {
                 cornumber = intnum;
@@ -147,24 +145,24 @@ class Program
         return result;
     }
     //Метод выводит на экран полученные от пользователя данные
-    static void ShowUserInfo(string Name, string LastName, int Age, bool Pet, string[] Pets, string[] Colors)
+    static void ShowUserInfo((string Name, string LastName, int Age, bool Pet, string[] Pets, string[] Colors) User)
     {
         Console.Clear();
         Console.WriteLine("5.6. Итоговый проект");
         Console.WriteLine("Анкета пользователя");
-        Console.WriteLine("Имя: {0}", Name);
-        Console.WriteLine("Фамилия: {0}", LastName);
-        Console.WriteLine("Возраст: {0}", Age);
-        if(Pet == true) 
+        Console.WriteLine("Имя: {0}", User.Name);
+        Console.WriteLine("Фамилия: {0}", User.LastName);
+        Console.WriteLine("Возраст: {0}", User.Age);
+        if(User.Pet == true) 
         {
             Console.WriteLine("Наличие питомца: Да");
-            Console.WriteLine("Количество питомцев: {0}", Pets.Length);
+            Console.WriteLine("Количество питомцев: {0}", User.Pets.Length);
             Console.Write("Клички питомцев: ");
-            for(int i = 0; i < Pets.Length; i++) 
+            for(int i = 0; i < User.Pets.Length; i++) 
             {
-                if(i == Pets.Length - 1)
-                Console.Write(Pets[i] + ".");
-                else Console.Write(Pets[i] + ", ");
+                if(i == User.Pets.Length - 1)
+                Console.Write(User.Pets[i] + ".");
+                else Console.Write(User.Pets[i] + ", ");
             }
             Console.WriteLine("");
         }
@@ -172,13 +170,13 @@ class Program
         {
             Console.WriteLine("Наличие питомца: Нет");
         }
-        Console.WriteLine("Количество любимых цветов: {0}", Colors.Length);
+        Console.WriteLine("Количество любимых цветов: {0}", User.Colors.Length);
         Console.Write("Любимые цвета: ");
-        for(int i = 0; i < Colors.Length; i++) 
+        for(int i = 0; i < User.Colors.Length; i++) 
         {
-            if(i == Colors.Length - 1)
-            Console.Write(Colors[i] + ".");
-            else Console.Write(Colors[i] + ", ");
+            if(i == User.Colors.Length - 1)
+            Console.Write(User.Colors[i] + ".");
+            else Console.Write(User.Colors[i] + ", ");
         }
         Console.WriteLine("");
         Console.ReadKey();
